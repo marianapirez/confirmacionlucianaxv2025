@@ -33,7 +33,6 @@ const invitados = {
 "Iris Almeida": 4,
 "Tamara Mello": 4,
 "Elisa Arriola": 1,
-"Chavo": ?,
 "Flavia Vieira": 1,
 "Sonia Figueroa": 2,
 "Jazmin Rivero": 4,
@@ -43,6 +42,7 @@ const invitados = {
 "Nara Olivera": 2,
 "Marlene Ribeiro": 2
 
+    
 };
 
 const CLAVE_ADMIN = "Luciana15";  // 🔒 Cambia esto por tu contraseña
