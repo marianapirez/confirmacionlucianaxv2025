@@ -120,11 +120,22 @@ function guardarConfirmacion(event) {
             lugaresConfirmados: lugares
         })
     }).then(() => {
-        alert("Asistencia confirmada. ¡Gracias!");
+        // Mostrar mensaje diferente según la asistencia
+        const mensajeGracias = document.getElementById("mensajeGracias");
+        const detalleGracias = document.getElementById("detalleGracias");
+
+        if (asistencia.value === "si") {
+            mensajeGracias.textContent = "Gracias por confirmar tu asistencia.";
+            detalleGracias.textContent = "¡Nos vemos en mis quince años!";
+        } else {
+            mensajeGracias.textContent = "Lamentamos que no puedas asistir.";
+            detalleGracias.textContent = "Espero verte en otra ocasión. ¡Gracias por avisarme!";
+        }
+
+        // Ocultar la segunda sección y mostrar la cuarta
         document.getElementById("pagina2").style.display = "none";
         document.getElementById("pagina4").style.display = "block";
     }).catch(error => console.error("Error:", error));
-
 }
 
 // Asignar eventos
