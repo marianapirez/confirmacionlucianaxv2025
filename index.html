@@ -11,8 +11,9 @@
         <!-- Página 1: Ingreso del nombre -->
         <section id="pagina1">
             <h1>Confirme la asistencia a los quince años de Luciana</h1>
-            <p>Ingrese su nombre y apellido</p>
-            <input type="text" id="nombre" placeholder="Escriba aquí">
+            <p>Ingrese su nombre y apellido (todo junto y en minúsculas)</p>
+            <p>o ingrese su número de celular</p>
+            <input type="text" id="nombre" placeholder="Ej: lucianaramos">
             <button id="continuarBtn">Continuar</button>
         </section>
 
@@ -34,31 +35,6 @@
             <p>(si no asistirá escriba "0")</p>
             <input type="number" id="lugaresConfirmados" min="0" placeholder="-">
             <button id="confirmarBtn">Enviar</button>
-
-            <!-- Formulario para Formspree -->
-            <form id="formspreeForm" action="https://formspree.io/f/xkgobpwr" method="POST" style="display:none;" onsubmit="handleFormSubmit(event)">
-                <input type="text" name="nombre" id="formNombre" hidden>
-                <input type="email" name="email" id="formEmail" hidden>
-                <input type="text" name="asistencia" id="formAsistencia" hidden>
-                <input type="text" name="lugaresConfirmados" id="formLugares" hidden>
-            </form>
-        </section>
-
-        <!-- Página 3: Ver confirmaciones (solo anfitrión) -->
-        <section id="pagina3" style="display: none;">
-            <h1>Confirmaciones de Asistencia</h1>
-            <table id="tablaConfirmaciones">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Asistencia</th>
-                        <th>Lugares Confirmados</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Las confirmaciones se agregarán aquí -->
-                </tbody>
-            </table>
         </section>
 
         <!-- Página 4: Agradecimiento -->
