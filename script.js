@@ -45,6 +45,9 @@ const invitados = {
 
 const CLAVE_ADMIN = "Luciana15";  // 🔒 Cambia esto por tu contraseña
 
+// URL del Web App de Google Apps Script
+const url = "https://script.google.com/macros/s/AKfycbx0HwdzZ-hFVZ_2BvyzJSNIOI874O_KiKB4qFWj0tBu/exec";
+
 // Función para buscar el invitado por nombre o número
 function buscarInvitado(event) {
     event.preventDefault(); // Evitar recarga de página
@@ -85,9 +88,9 @@ function buscarInvitado(event) {
     }
 }
 
-// Función para guardar la confirmación de asistencia y enviar a Formspree
+// Función para guardar la confirmación de asistencia y enviar a Google Sheets
 function guardarConfirmacion(event) {
-    event.preventDefault(); // Evitar recarga de página
+    event.preventDefault();
 
     const asistencia = document.querySelector('input[name="asistencia"]:checked');
     const lugares = parseInt(document.getElementById("lugaresConfirmados").value);
@@ -97,42 +100,33 @@ function guardarConfirmacion(event) {
         return;
     }
 
-    // Obtener los lugares disponibles para el invitado desde localStorage
-    const cuposDisponibles = parseInt(localStorage.getItem("cupos"));
+    const nombre = localStorage.getItem("nombre");
 
+    // Verificar si los lugares confirmados son mayores que los asignados
+    const cuposDisponibles = parseInt(localStorage.getItem("cupos"));
     if (lugares > cuposDisponibles) {
-        alert("No puedes confirmar más lugares de los disponibles.");
+        alert("No puedes confirmar más lugares que los asignados.");
         return;
     }
 
-    // Enviar los datos a Formspree
-    const formData = new FormData();
-    formData.append("nombre", localStorage.getItem("nombre"));
-    formData.append("asistencia", asistencia.value);
-    formData.append("lugares", lugares);
-
-    fetch("https://formspree.io/f/mjvqdbjq", {
+    // Enviar los datos a Google Sheets
+    fetch("https://script.google.com/macros/s/AKfycbyRo-LVhpR5zLo7vrEXmK5QB2g3SkJMq8-IrFHp9CgcjeaZvdLhnspm0G7bP1w0f3R2Iw/exec", {
         method: "POST",
-        body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Mostrar agradecimiento
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            nombre: nombre,
+            asistencia: asistencia.value,
+            lugaresConfirmados: lugares
+        })
+    }).then(() => {
+        alert("Asistencia confirmada. ¡Gracias!");
         document.getElementById("pagina2").style.display = "none";
         document.getElementById("pagina4").style.display = "block";
-        document.getElementById("mensajeGracias").textContent = "Gracias por confirmar tu asistencia.";
-        document.getElementById("detalleGracias").textContent = `¡Nos vemos en mis quince años, ${localStorage.getItem("nombre")}!`;
+    }).catch(error => console.error("Error:", error));
 
-        // Limpiar localStorage
-        localStorage.removeItem("nombre");
-        localStorage.removeItem("cupos");
-    })
-    .catch(error => {
-        console.error("Error al enviar el formulario:", error);
-        alert("Hubo un error al enviar tu confirmación. Por favor, intenta nuevamente.");
-    });
 }
 
-// Añadir eventos
+// Asignar eventos
 document.getElementById("continuarBtn").addEventListener("click", buscarInvitado);
 document.getElementById("confirmarBtn").addEventListener("click", guardarConfirmacion);
