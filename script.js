@@ -40,104 +40,125 @@ const invitados = {
     "isaurafrias": { nombre: "Isaura Frías", telefono: "46223641", cupos: 1 },
     "biancarodriguez": { nombre: "Bianca Rodríguez", telefono: "092789970", cupos: 1 },
     "albertomoreno": { nombre: "Alberto Moreno", telefono: "098743203", cupos: 1 },
-    "fernandavalbuena": { nombre: "Fernanda Valbuena", telefono: "091208406", cupos: 3 },
-};
-
-const CLAVE_ADMIN = "Luciana15";  // 🔒 Cambia esto por tu contraseña
-
-// URL del Web App de Google Apps Script
-const url = "https://script.google.com/macros/s/AKfycbx0HwdzZ-hFVZ_2BvyzJSNIOI874O_KiKB4qFWj0tBu/exec";
-
-// Función para buscar el invitado por nombre o número
-function buscarInvitado(event) {
-    event.preventDefault(); // Evitar recarga de página
-
-    let input = document.getElementById("nombre").value.trim();
-
-    if (input === "") {
-        alert("Por favor, ingrese su nombre o teléfono.");
-        return;
-    }
-
-    // Verificar si el input es un número de teléfono
-    let invitadoEncontrado = null;
-
-    for (let clave in invitados) {
-        // Si el input es un número de teléfono
-        if (invitados[clave].telefono === input || clave === input) {
-            invitadoEncontrado = invitados[clave];
-            break;
-        }
-    }
-
-    // Verificar si se encontró el invitado
-    if (invitadoEncontrado) {
-        // Guardar el nombre y los cupos en localStorage
-        localStorage.setItem("nombre", invitadoEncontrado.nombre);
-        localStorage.setItem("cupos", invitadoEncontrado.cupos);
-
-        // Ocultar la primera sección y mostrar la segunda
-        document.getElementById("pagina1").style.display = "none";
-        document.getElementById("pagina2").style.display = "block";
-
-        // Actualizar el saludo y los cupos disponibles
-        document.getElementById("nombreInvitado").textContent = invitadoEncontrado.nombre;
-        document.getElementById("cupos").textContent = invitadoEncontrado.cupos;
-    } else {
-        alert("Nombre o teléfono no encontrado en la lista de invitados.");
-    }
-}
-
-// Función para guardar la confirmación de asistencia y enviar a Google Sheets
-function guardarConfirmacion(event) {
+    "fernandavalbuena": { nombre: "Fernanda Valbuena", telefono: "091208406", cupos: 3 }
+  };
+  
+  const CLAVE_ADMIN = "Luciana15"; // Cambia esto por tu contraseña
+  const url = "https://script.google.com/macros/s/AKfycbwNbzVbhE0J7KNXqDbSiul6WMyaFxV8fFvTFai9QTllD4hsVH5RcXzjuyOEspUm4FZdlg/exec"; // URL del Web App
+    
+  // Función para buscar el invitado por nombre o teléfono
+  function buscarInvitado(event) {
     event.preventDefault();
-
-    const asistencia = document.querySelector('input[name="asistencia"]:checked');
-    const lugares = parseInt(document.getElementById("lugaresConfirmados").value);
-
-    if (!asistencia || isNaN(lugares)) {
-        alert("Por favor, complete todos los campos.");
-        return;
+    const input = document.getElementById("nombre").value.trim();
+    if (input === "") {
+      alert("Por favor, ingrese su nombre o teléfono.");
+      return;
     }
-
+    let invitadoEncontrado = null;
+    for (let clave in invitados) {
+      if (invitados[clave].telefono === input || clave === input) {
+        invitadoEncontrado = invitados[clave];
+        break;
+      }
+    }
+    if (invitadoEncontrado) {
+      localStorage.setItem("nombre", invitadoEncontrado.nombre);
+      localStorage.setItem("cupos", invitadoEncontrado.cupos);
+      // Ocultar la página 1 y mostrar la página 2
+      document.getElementById("pagina1").style.display = "none";
+      document.getElementById("pagina2").style.display = "block";
+      // Actualizar saludo y mensaje de cupos en el contenedor extra
+      document.getElementById("nombreInvitado").textContent = invitadoEncontrado.nombre;
+      document.getElementById("cupos").textContent = "Tienes disponibles " + invitadoEncontrado.cupos + " lugares.";
+    } else {
+      alert("Nombre o teléfono no encontrado en la lista de invitados, intente otra vez.");
+    }
+  }
+    
+  // Función para mostrar u ocultar el contenedor extra según la selección
+  function actualizarCampos() {
+    const asistenciaElem = document.querySelector('input[name="asistencia"]:checked');
+    const extras = document.getElementById("extras");
+    const mensajeContainer = document.getElementById("mensajeContainer");
+    
+    if (asistenciaElem) {
+      if (asistenciaElem.value === "si") {
+        extras.style.display = "block";
+        mensajeContainer.style.display = "none";
+      } else if (asistenciaElem.value === "no") {
+        extras.style.display = "none";
+        document.getElementById("lugaresConfirmados").value = "";
+        mensajeContainer.style.display = "block";
+      }
+    } else {
+      extras.style.display = "none";
+      mensajeContainer.style.display = "none";
+    }
+  }
+    
+  // Función para guardar la confirmación de asistencia y enviar a Google Sheets
+  function guardarConfirmacion(event) {
+    event.preventDefault();
+    console.log("Se hizo clic en Enviar.");
+    const asistenciaElem = document.querySelector('input[name="asistencia"]:checked');
+    if (!asistenciaElem) {
+      alert("Por favor, indique si asistirá o no.");
+      return;
+    }
+    const asistencia = asistenciaElem.value;
     const nombre = localStorage.getItem("nombre");
-
-    // Verificar si los lugares confirmados son mayores que los asignados
-    const cuposDisponibles = parseInt(localStorage.getItem("cupos"));
-    if (lugares > cuposDisponibles) {
-        alert("No puedes confirmar más lugares que los asignados.");
+    let lugares = 0;
+    let mensaje = ""; // Para el mensaje opcional en caso de "no"
+    
+    if (asistencia === "si") {
+      lugares = parseInt(document.getElementById("lugaresConfirmados").value);
+      const cuposDisponibles = parseInt(localStorage.getItem("cupos"));
+      if (isNaN(lugares) || lugares < 1 || lugares > cuposDisponibles) {
+        alert("No puede confirmar más lugares de los asignados.");
         return;
+      }
+    } else if (asistencia === "no") {
+      mensaje = document.getElementById("mensaje").value;
     }
+    
+    console.log("Enviando datos:", { nombre, asistencia, lugares, mensaje });
+    
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: nombre,
+        asistencia: asistencia,
+        lugaresConfirmados: lugares,
+        mensaje: mensaje  // Mensaje adicional para la columna E
+      })
+    })
+    .then(response => {
+      console.log("Respuesta del Web App:", response);
+      return response.json();
+    })
+    .then(result => {
+      console.log("Resultado:", result);
+      const mensajeGracias = document.getElementById("mensajeGracias");
+      const detalleGracias = document.getElementById("detalleGracias");
+      if (asistencia === "si") {
+        mensajeGracias.textContent = "Gracias por confirmar tu presencia.";
+        detalleGracias.textContent = "¡Nos vemos en mis quince años!";
+      } else {
+        mensajeGracias.textContent = "Lamento que no puedas asistir.";
+        detalleGracias.textContent = "Espero verte en otra ocasión. ¡Gracias por avisarme!";
+      }
+      document.getElementById("pagina2").style.display = "none";
+      document.getElementById("pagina4").style.display = "block";
+    })
+    .catch(error => console.error("Error en fetch:", error));
+  }
+    
+  // Asignar eventos a los botones y radio inputs
+  document.getElementById("continuarBtn").addEventListener("click", buscarInvitado);
+  document.getElementById("confirmarBtn").addEventListener("click", guardarConfirmacion);
+  document.querySelectorAll('input[name="asistencia"]').forEach(input => {
+    input.addEventListener("change", actualizarCampos);
+  });
 
-    // Enviar los datos a Google Sheets
-    fetch("https://script.google.com/macros/s/AKfycbyRo-LVhpR5zLo7vrEXmK5QB2g3SkJMq8-IrFHp9CgcjeaZvdLhnspm0G7bP1w0f3R2Iw/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            nombre: nombre,
-            asistencia: asistencia.value,
-            lugaresConfirmados: lugares
-        })
-    }).then(() => {
-        // Mostrar mensaje diferente según la asistencia
-        const mensajeGracias = document.getElementById("mensajeGracias");
-        const detalleGracias = document.getElementById("detalleGracias");
 
-        if (asistencia.value === "si") {
-            mensajeGracias.textContent = "Gracias por confirmar tu asistencia.";
-            detalleGracias.textContent = "¡Nos vemos en mis quince años!";
-        } else {
-            mensajeGracias.textContent = "Lamentamos que no puedas asistir.";
-            detalleGracias.textContent = "Espero verte en otra ocasión. ¡Gracias por avisarme!";
-        }
-
-        // Ocultar la segunda sección y mostrar la cuarta
-        document.getElementById("pagina2").style.display = "none";
-        document.getElementById("pagina4").style.display = "block";
-    }).catch(error => console.error("Error:", error));
-}
-
-// Asignar eventos
-document.getElementById("continuarBtn").addEventListener("click", buscarInvitado);
-document.getElementById("confirmarBtn").addEventListener("click", guardarConfirmacion);
