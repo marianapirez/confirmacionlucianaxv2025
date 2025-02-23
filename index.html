@@ -11,7 +11,6 @@
     <!-- Página 1: Ingreso del nombre -->
     <section id="pagina1">
       <h1>Confirme su presencia a los quince años de Luciana</h1>
-
       <p>Ingrese su número de celular o su nombre y apellido</p>
       <p>(todo junto y en minúsculas)</p>
       <input type="text" id="nombre" placeholder="Ej: lucianaramos">
@@ -30,19 +29,21 @@
         <label for="no" class="radio-label">No</label>
       </div>
     
-      <!-- Contenedor extra, oculto inicialmente -->
-      <div id="extras" style="display: none;">
+      <!-- Contenedor para "Sí" (cantidad de lugares) -->
+      <div id="extras_si" style="display: none;">
         <h1 id="cupos">Tienes disponibles X lugares.</h1>
         <p>¿Cuántos lugares confirma?</p>
         <input type="number" id="lugaresConfirmados" min="1" placeholder="-">
       </div>
-
-      <!-- Campo para el mensaje de la quinceañera (opcional) -->
-      <div id="mensajeContainer" style="display: none;">
-        <h2>Deja un mensaje para la quinceañera</h2>
-        <textarea id="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje (opcional)"></textarea>
-      </div>
-
+      
+      <!-- Contenedor para "No" (mensaje opcional) -->
+<div id="mensaje_no" style="display: none;">
+    <h1>Deja un mensaje para Luciana</h1>
+    <p>(opcional)</p>
+    <textarea id="mensaje" placeholder="Escribe tu mensaje aquí"></textarea>
+  </div>
+  
+      
       <button id="confirmarBtn">Enviar</button>
     </section>
 
