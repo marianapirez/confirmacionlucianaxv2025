@@ -60,7 +60,7 @@ const invitados = {
     "fernandavalbuena": { nombre: "Fernanda Valbuena", telefono: "091208406", cupos: 3 },
     "silviaviera": { nombre: "Silvia Viera", telefono: "091370436", cupos: 2 },
     "felipecardozo": { nombre: "Felipe Cardozo", telefono: "96279879", cupos: 2 },
-    "sofiabuere": { nombre: "Sofía Buere", telefono: "", cupos: 1 },
+    "sofiabuere": { nombre: "Sofía Buere", telefono: "092303374", cupos: 1 },
     
     // Lista de invitados Mar (1)
     "biancarodriguez": { nombre: "Bianca Rodríguez", telefono: "092789970", cupos: 1 },
