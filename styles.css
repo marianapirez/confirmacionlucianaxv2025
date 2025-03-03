@@ -36,33 +36,32 @@ textarea {
     border-radius: 5px;
     border: none;
     text-align: center;
-    background-color: #bdbdbd; /* Fondo oscuro similar al color de la página */
-    color: #0d1828;         /* Texto gris claro */
-    resize: none;           /* Deshabilitar la opción de redimensionar */
+    background-color: #bdbdbd; /* Fondo gris claro */
+    color: #000;              /* Texto negro */
+    resize: none;             /* Deshabilitar la opción de redimensionar */
 }
 
 /* Estilos para los botones (Continuar y Enviar) */
 button {
-    background-color: #0d1828; /* Fondo azul */
-    color: #fff;               /* Texto blanco */
-    border: 2px solid #fff;    /* Borde blanco */
+    background-color: #0d1828;
+    color: #fff;
+    border: 2px solid #fff;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     margin: 10px;
-    border-radius: 50px;       /* Totalmente redondeados */
+    border-radius: 50px;
     font-family: "Roboto", sans-serif;
 }
 
 /* Hover para los botones */
 button:hover {
-    background-color: #0d1828; /* Azul un poco más oscuro */
+    background-color: #0a1220;
 }
 
 /* Efecto al presionar el botón */
 button:active {
-    background-color: #0d1828;
-    color: #fff;
+    background-color: #08101e;
 }
 
 /* Contenedor de los botones de radio */
@@ -84,10 +83,10 @@ button:active {
     padding: 12px 24px;
     background-color: #bdbdbd;
     color: #0d1828;
-    border-radius: 50px;       /* Totalmente redondeados */
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    border: 2px solid transparent; /* Borde transparente por defecto */
+    border: 2px solid transparent;
     text-align: center;
 }
 
@@ -115,7 +114,7 @@ textarea {
     border-radius: 5px;
     border: none;
     text-align: center;
-    background-color: #bdbdbd; /* Fondo oscuro similar al color de la página */
-    color: #0d1828;         /* Texto gris claro */
-    resize: none;           /* Deshabilitar la opción de redimensionar */
+    background-color: #bdbdbd;
+    color: #000; /* Texto negro */
+    resize: none;
 }
