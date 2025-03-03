@@ -1,8 +1,9 @@
 
 const invitados = {
   
-  // Lista de invitados Lu (19)
+  // Lista de invitados Lu (20)
    "matiasrossi": { nombre: "Matías Rossi", telefono: "098151725", cupos: 2 },
+   "emanuelrodriguez": { nombre: "Emanuel Rodríguez", telefono: "58302905", cupos: 1 },
    "katherincuello": { nombre: "Katherin Cuello", telefono: "098117012", cupos: 1 },
    "rominaramirez": { nombre: "Romina Ramirez", telefono: "098495993", cupos: 1 },
    "lucasfurtado": { nombre: "Lucas Furtado", telefono: "091037554", cupos: 1 },
