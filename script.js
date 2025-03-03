@@ -48,7 +48,7 @@ const invitados = {
     "deliairigaray": { nombre: "Delia Irigaray", telefono: "097038076", cupos: 1 },
     "soniafigueroa": { nombre: "Sonia Figueroa", telefono: "095511703", cupos: 2 },
     "karladossantos": { nombre: "Karla dos Santos", telefono: "098039913", cupos: 3 },
-    "lorenawilkins": { nombre: "Lorena Wilkins", telefono: "094971599", cupos: 5 },
+    "lorenawilkins": { nombre: "Lorena Wilkins", telefono: "094971599", cupos: 7 },
     "marciarodriguez": { nombre: "Marcia Rodríguez", telefono: "095608377", cupos: 5 },
     "naraolivera": { nombre: "Nara Olivera", telefono: "093363063", cupos: 2 },
     "marlenribeiro": { nombre: "Marlene Ribeiro", telefono: "97037194", cupos: 2 },
