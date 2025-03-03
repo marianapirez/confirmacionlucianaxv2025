@@ -37,7 +37,7 @@ textarea {
     border: none;
     text-align: center;
     background-color: #bdbdbd; /* Fondo oscuro similar al color de la página */
-    color: #000000;         /* Texto gris claro */
+    color: #0d1828;         /* Texto gris claro */
     resize: none;           /* Deshabilitar la opción de redimensionar */
 }
 
@@ -116,6 +116,6 @@ textarea {
     border: none;
     text-align: center;
     background-color: #bdbdbd; /* Fondo oscuro similar al color de la página */
-    color: #000000;         /* Texto gris claro */
+    color: #0d1828;         /* Texto gris claro */
     resize: none;           /* Deshabilitar la opción de redimensionar */
 }
