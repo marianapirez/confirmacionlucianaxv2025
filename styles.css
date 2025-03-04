@@ -37,15 +37,15 @@ textarea {
     border: none;
     text-align: center;
     background-color: #bdbdbd; /* Fondo gris claro */
-    color: #000;              /* Texto negro */
+    color: #0d1828;              /* Texto negro */
     resize: none;             /* Deshabilitar la opción de redimensionar */
 }
 
 /* Estilos para los botones (Continuar y Enviar) */
 button {
     background-color: #0d1828;
-    color: #fff;
-    border: 2px solid #fff;
+    color: #bdbdbd;
+    border: 2px solid #bdbdbd;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -56,12 +56,12 @@ button {
 
 /* Hover para los botones */
 button:hover {
-    background-color: #0a1220;
+    background-color: #0d1828;
 }
 
 /* Efecto al presionar el botón */
 button:active {
-    background-color: #08101e;
+    background-color: #0d1828;
 }
 
 /* Contenedor de los botones de radio */
@@ -115,6 +115,6 @@ textarea {
     border: none;
     text-align: center;
     background-color: #bdbdbd;
-    color: #000; /* Texto negro */
+    color: #0d1828; /* Texto negro */
     resize: none;
 }
