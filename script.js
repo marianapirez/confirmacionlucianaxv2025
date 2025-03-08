@@ -1,4 +1,3 @@
-
 const invitados = {
   
   // Lista de invitados Lu (20)
@@ -147,11 +146,13 @@ function actualizarCampos() {
 // Función para guardar la confirmación y enviar a Google Sheets
 function guardarConfirmacion(event) {
   event.preventDefault();
+
   const asistenciaElem = document.querySelector('input[name="asistencia"]:checked');
   if (!asistenciaElem) {
-    alert("Por favor, indique si asistirá o no.");
+    alert("Por favor, indique si o no.");
     return;
   }
+
   const asistencia = asistenciaElem.value;
   const nombre = localStorage.getItem("nombre");
   let lugares = 0;
@@ -165,6 +166,10 @@ function guardarConfirmacion(event) {
   }
 
   const mensaje = asistencia === "no" ? document.getElementById("mensajeQuinceañera").value : '';
+
+  // Mostrar "espere"
+  document.getElementById("pagina2").style.display = "none";
+  document.getElementById("pagina3").style.display = "block";
 
   fetch(url, {
     method: "POST",
@@ -187,7 +192,8 @@ function guardarConfirmacion(event) {
       detalleGracias.textContent = "Espero verte en otra ocasión. ¡Gracias por avisarme!";
     }
 
-    document.getElementById("pagina2").style.display = "none";
+    // Ocultar la página 3 y mostrar la página 4
+    document.getElementById("pagina3").style.display = "none";
     document.getElementById("pagina4").style.display = "block";
   }).catch(error => console.error("Error:", error));
 }
