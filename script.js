@@ -20,6 +20,7 @@ const invitados = {
    "camilagarcia": { nombre: "Camila García", telefono: "098126821", cupos: 1 },
    "natachamickaely": { nombre: "Natacha Mickaely", telefono: "092443936", cupos: 1 },
    "jazminrivero": { nombre: "Jazmin Rivero", telefono: "098062436", cupos: 1 },
+   "aaronmendiondo": { nombre: "Aarón Mendiondo", telefono: "093883670", cupos: 1 },
 
 // Lista de invitados Familia (103) + 5 de nosotros (no estamos en lista)
     "makinsondossantos": { nombre: "Makinson dos Santos", telefono: "095608348", cupos: 1 },
@@ -203,4 +204,4 @@ document.getElementById("continuarBtn").addEventListener("click", buscarInvitado
 document.getElementById("confirmarBtn").addEventListener("click", guardarConfirmacion);
 document.querySelectorAll('input[name="asistencia"]').forEach(input => {
   input.addEventListener("change", actualizarCampos);
-});
+});s
