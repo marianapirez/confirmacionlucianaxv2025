@@ -1,9 +1,11 @@
 /* Estilos generales */
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Arapey", serif;
     text-align: center;
     background-color: #0d1828;
     color: #bdbdbd;
+    margin: 0;
+    padding: 0;
 }
 
 /* Contenedor principal */
@@ -19,10 +21,22 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 4px;
+    font-family: "Arapey", serif;
+    font-weight: normal;
 }
 
 p {
     font-size: 18px;
+    font-family: "Arapey", serif;
+    font-weight: normal;
+}
+
+/* Estilo para la imagen "Luciana" */
+.logo-luciana {
+    display: block;
+    margin: 0 auto;
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
 }
 
 /* Estilos para los inputs y textarea */
@@ -37,8 +51,10 @@ textarea {
     border: none;
     text-align: center;
     background-color: #bdbdbd; /* Fondo gris claro */
-    color: #0d1828;              /* Texto negro */
-    resize: none;             /* Deshabilitar la opción de redimensionar */
+    color: #0d1828; /* Texto negro */
+    resize: none;
+    font-family: "Arapey", serif;
+    font-weight: normal;
 }
 
 /* Estilos para los botones (Continuar y Enviar) */
@@ -51,17 +67,20 @@ button {
     cursor: pointer;
     margin: 10px;
     border-radius: 50px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Arapey", serif;
+    font-weight: normal;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Hover para los botones */
 button:hover {
-    background-color: #0d1828;
+    background-color: #bdbdbd;
+    color: #0d1828;
 }
 
 /* Efecto al presionar el botón */
 button:active {
-    background-color: #0d1828;
+    background-color: #a8a8a8;
 }
 
 /* Contenedor de los botones de radio */
@@ -88,6 +107,8 @@ button:active {
     transition: all 0.3s ease-in-out;
     border: 2px solid transparent;
     text-align: center;
+    font-family: "Arapey", serif;
+    font-weight: normal;
 }
 
 /* Cambio de color al pasar el mouse para radio-label */
@@ -100,7 +121,6 @@ button:active {
     background-color: #bdbdbd;
     color: #0d1828;
     border: 2px solid #bdbdbd;
-    font-weight: bold;
     transform: scale(1.05);
     box-shadow: 0px 0px 8px #bdbdbd;
 }
@@ -117,4 +137,6 @@ textarea {
     background-color: #bdbdbd;
     color: #0d1828; /* Texto negro */
     resize: none;
+    font-family: "Arapey", serif;
+    font-weight: normal;
 }
