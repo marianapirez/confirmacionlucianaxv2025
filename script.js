@@ -78,7 +78,7 @@ const invitados = {
    "michellegeraldo": { nombre: "Michelle Geraldo", telefono: "094967355", cupos: 2 },
    "virginiairigoyen": { nombre: "Virginia Irigoyen", telefono: "099394805", cupos: 1 },
    "camilocal": { nombre: "Camilo Cal", telefono: "095730721", cupos: 1 },
-   "emilene": { nombre: "Emilene", telefono: "098828126", cupos: 2 },
+   "emilene": { nombre: "Emilene", telefono: "098828126", cupos: 3 },
    "alisonperez": { nombre: "Alison Perez", telefono: "092181593", cupos: 1 },
 
 };
