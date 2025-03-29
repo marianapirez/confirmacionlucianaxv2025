@@ -21,6 +21,7 @@ const invitados = {
    "natachamickaely": { nombre: "Natacha Mickaely", telefono: "092443936", cupos: 1 },
    "jazminrivero": { nombre: "Jazmin Rivero", telefono: "098062436", cupos: 1 },
    "aaronmendiondo": { nombre: "Aarón Mendiondo", telefono: "093883670", cupos: 1 },
+   "helenmachado": { nombre: "Helen Machado", telefono: "096937218", cupos: 1 },
 
 // Lista de invitados Familia (103) + 5 de nosotros (no estamos en lista)
     "makinsondossantos": { nombre: "Makinson dos Santos", telefono: "095608348", cupos: 1 },
