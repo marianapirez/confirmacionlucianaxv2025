@@ -68,7 +68,7 @@ const invitados = {
     
     // Lista de invitados Mar (1)
     "biancarodriguez": { nombre: "Bianca Rodríguez", telefono: "092789970", cupos: 1 },
-
+    "gabrielgermano": { nombre: "Gabriel Germano", telefono: "092906094", cupos: 1},
     // Lista de invitados Mamá (16)
    "flaviavieira": { nombre: "Flavia Vieira", telefono: "092988314", cupos: 1 },
    "albertomoreno": { nombre: "Alberto Moreno", telefono: "098743203", cupos: 3 },
